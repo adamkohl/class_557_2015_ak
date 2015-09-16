@@ -132,7 +132,7 @@ unsigned int createTriangleStripModel(void)
     vertices[27] = 1.0; vertices[28] = 1.0; vertices[29] = -2.0;
     colors[27] = 0.0; colors[28] = 0.0; colors[29] = 1.0;
     
-    //Left Pentagon (small square)
+    //Left pentagon (small square)
     vertices[30] = 0.0; vertices[31] = 1.0; vertices[32] = -2.0;
     colors[30] = 0.0; colors[31] = 0.0; colors[32] = 1.0;
     
@@ -144,6 +144,13 @@ unsigned int createTriangleStripModel(void)
     
     vertices[39] = 1.0; vertices[40] = 2.0; vertices[41] = -2.0;
     colors[39] = 0.0; colors[40] = 0.0; colors[41] = 1.0;
+    
+    //Left pentagon face (triangle)
+    vertices[42] = 3.0; vertices[43] = 1.0; vertices[44] = -2.0;
+    colors[42] = 0.0; colors[43] = 0.0; colors[44] = 1.0;
+    
+    vertices[45] = 1.0; vertices[46] = 1.0; vertices[47] = -2.0;
+    colors[45] = 0.0; colors[46] = 0.0; colors[47] = 1.0;
     
     glGenVertexArrays(2, &vaoID[0]); // Create our Vertex Array Object
     glBindVertexArray(vaoID[0]); // Bind our Vertex Array Object so we can use it
@@ -196,7 +203,7 @@ void renderTriangleStripModel(void)
     glBindVertexArray(vaoID[0]);
     
     // Draw the triangles
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 14);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 16);
 }
 
 /*!
