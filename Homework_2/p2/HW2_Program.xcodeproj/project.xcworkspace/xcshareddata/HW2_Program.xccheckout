@@ -14,11 +14,11 @@
 		<string>https://github.com/adamkohl/class_557_2015_ak.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>02_Programming_and_3D_Modeling/HW2_Program.xcodeproj</string>
+	<string>Homework_2/p2/HW2_Program.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5924F285F0E43E88406B25FDC8E9D55B8AEE3C3C</key>
-		<string>../../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/adamkohl/class_557_2015_ak.git</string>

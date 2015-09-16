@@ -132,7 +132,7 @@ unsigned int createTriangleStripModel(void)
     vertices[27] = 1.0; vertices[28] = 1.0; vertices[29] = -2.0;
     colors[27] = 0.0; colors[28] = 0.0; colors[29] = 1.0;
     
-    //Left pentagon (small square)
+    //Left pentagon face (small square)
     vertices[30] = 0.0; vertices[31] = 1.0; vertices[32] = -2.0;
     colors[30] = 0.0; colors[31] = 0.0; colors[32] = 1.0;
     
@@ -145,12 +145,58 @@ unsigned int createTriangleStripModel(void)
     vertices[39] = 1.0; vertices[40] = 2.0; vertices[41] = -2.0;
     colors[39] = 0.0; colors[40] = 0.0; colors[41] = 1.0;
     
-    //Left pentagon face (triangle)
+    //Left pentagon top rectangle
     vertices[42] = 3.0; vertices[43] = 1.0; vertices[44] = -2.0;
     colors[42] = 0.0; colors[43] = 0.0; colors[44] = 1.0;
     
     vertices[45] = 1.0; vertices[46] = 1.0; vertices[47] = -2.0;
     colors[45] = 0.0; colors[46] = 0.0; colors[47] = 1.0;
+    
+    vertices[48] = 3.0; vertices[49] = 0.0; vertices[50] = -2.0;
+    colors[48] = 0.0; colors[49] = 0.0; colors[50] = 1.0;
+    
+    vertices[51] = 1.0; vertices[52] = 0.0; vertices[53] = -2.0;
+    colors[51] = 0.0; colors[52] = 0.0; colors[53] = 1.0;
+    
+    //Bottom 2/3s of pentagon
+    vertices[54] = 1.0; vertices[55] = 0.0; vertices[56] = -3.0;
+    colors[54] = 0.0; colors[55] = 0.0; colors[56] = 1.0;
+    
+    vertices[57] = 3.0; vertices[58] = 0.0; vertices[59] = -2.0;
+    colors[57] = 0.0; colors[58] = 0.0; colors[59] = 1.0;
+    
+    vertices[60] = 3.0; vertices[61] = 0.0; vertices[62] = -3.0;
+    colors[60] = 0.0; colors[61] = 0.0; colors[62] = 1.0;
+    
+    //Small face rectangle of pentagon
+    vertices[63] = 3.0; vertices[64] = 1.0; vertices[65] = -2.0;
+    colors[63] = 0.0; colors[64] = 0.0; colors[65] = 1.0;
+    
+    vertices[66] = 3.0; vertices[67] = 1.0; vertices[68] = -3.0;
+    colors[66] = 0.0; colors[67] = 0.0; colors[68] = 1.0;
+    
+    //Top face of pentagon
+    vertices[69] = 1.0; vertices[70] = 2.0; vertices[71] = -2.0;
+    colors[69] = 0.0; colors[70] = 0.0; colors[71] = 1.0;
+    
+    vertices[72] = 1.0; vertices[73] = 2.0; vertices[74] = -3.0;
+    colors[72] = 0.0; colors[73] = 0.0; colors[74] = 1.0;
+    
+    vertices[75] = 0.0; vertices[76] = 2.0; vertices[77] = -2.0;
+    colors[75] = 0.0; colors[76] = 0.0; colors[77] = 1.0;
+    
+    vertices[78] = 0.0; vertices[79] = 2.0; vertices[80] = -3.0;
+    colors[78] = 0.0; colors[79] = 0.0; colors[80] = 1.0;
+    
+    //Back face of pentagon
+    vertices[81] = 0.0; vertices[82] = 0.0; vertices[83] = -3.0;
+    colors[81] = 0.0; colors[82] = 0.0; colors[83] = 1.0;
+    
+    vertices[84] = 0.0; vertices[85] = 2.0; vertices[86] = -2.0;
+    colors[84] = 0.0; colors[85] = 0.0; colors[86] = 1.0;
+    
+    vertices[87] = 0.0; vertices[88] = 0.0; vertices[89] = -2.0;
+    colors[87] = 0.0; colors[88] = 0.0; colors[89 ] = 1.0;
     
     glGenVertexArrays(2, &vaoID[0]); // Create our Vertex Array Object
     glBindVertexArray(vaoID[0]); // Bind our Vertex Array Object so we can use it
@@ -203,7 +249,7 @@ void renderTriangleStripModel(void)
     glBindVertexArray(vaoID[0]);
     
     // Draw the triangles
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 16);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 30);
 }
 
 /*!
@@ -364,7 +410,7 @@ int main(int argc, const char * argv[])
         glUniformMatrix4fv(viewMatrixLocation, 1, GL_FALSE, &viewMatrix[0][0]); // send the view matrix to our shader
         
         // This moves the model to the right
-        modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(2.0f, 0.0f, 0.0f));
+        modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-2.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(modelMatrixLocation, 1, GL_FALSE, &modelMatrix[0][0]); // Send our model matrix to the shader
         
         renderTriangleStripModel();
