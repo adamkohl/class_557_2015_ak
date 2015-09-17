@@ -9,7 +9,7 @@
 #include <iostream>
 using namespace std;
 
-double myFunction(int n )
+double getFibonacciNum(int n )
 {
     unsigned int i = 0, j = 1, t, k;
     for (k=0; k <= n; ++k)
@@ -23,6 +23,6 @@ double myFunction(int n )
 
 int main(int argc , char *argv[])
 {
-    double p = myFunction(10);
+    double p = getFibonacciNum(10);
     cout << p << endl;
 }
