@@ -95,8 +95,8 @@ unsigned int vboID[2];
 unsigned int createTriangleStripModel(void)
 {
     // use the vertex array object vaoID[0] for this model representation
-    float* vertices = new float[144];  // Vertices
-    float *colors = new float[144]; // Colors
+    float* vertices = new float[126];  // Vertices
+    float *colors = new float[126]; // Colors
     
     //Front of small rectangle
     vertices[0] = 1.0; vertices[1] = 0.0; vertices[2] = -2.0;
@@ -196,7 +196,45 @@ unsigned int createTriangleStripModel(void)
     colors[84] = 0.0; colors[85] = 0.0; colors[86] = 1.0;
     
     vertices[87] = 0.0; vertices[88] = 0.0; vertices[89] = -2.0;
-    colors[87] = 0.0; colors[88] = 0.0; colors[89 ] = 1.0;
+    colors[87] = 0.0; colors[88] = 0.0; colors[89] = 1.0;
+    
+    //Bottom face
+    vertices[90] = 0.0; vertices[91] = 0.0; vertices[92] = 0.0;
+    colors[90] = 0.0; colors[91] = 0.0; colors[92] = 1.0;
+    
+    vertices[93] = 1.0; vertices[94] = 0.0; vertices[95] = 0.0;
+    colors[93] = 0.0; colors[94] = 0.0; colors[95] = 1.0;
+    
+    vertices[96] = 0.0; vertices[97] = 0.0; vertices[98] = -2.0;
+    colors[96] = 0.0; colors[97] = 0.0; colors[98] = 1.0;
+    
+    vertices[99] = 1.0; vertices[100] = 0.0; vertices[101] = -2.0;
+    colors[99] = 0.0; colors[100] = 0.0; colors[101] = 1.0;
+    
+    vertices[102] = 0.0; vertices[103] = 0.0; vertices[104] = -3.0;
+    colors[102] = 0.0; colors[103] = 0.0; colors[104] = 1.0;
+    
+    vertices[105] = 1.0; vertices[106] = 0.0; vertices[107] = -3.0;
+    colors[105] = 0.0; colors[106] = 0.0; colors[107] = 1.0;
+    
+    //Right face of pentagon
+    vertices[108] = 0.0; vertices[109] = 2.0; vertices[110] = -3.0;
+    colors[108] = 0.0; colors[109] = 0.0; colors[110] = 1.0;
+    
+    vertices[111] = 1.0; vertices[112] = 2.0; vertices[113] = -3.0;
+    colors[111] = 0.0; colors[112] = 0.0; colors[113] = 1.0;
+    
+    vertices[114] = 1.0; vertices[115] = 0.0; vertices[116] = -3.0;
+    colors[114] = 0.0; colors[115] = 0.0; colors[116] = 1.0;
+    
+    vertices[117] = 3.0; vertices[118] = 1.0; vertices[119] = -3.0;
+    colors[117] = 0.0; colors[118] = 0.0; colors[119] = 1.0;
+    
+    vertices[120] = 3.0; vertices[121] = 0.0; vertices[122] = -3.0;
+    colors[120] = 0.0; colors[121] = 0.0; colors[122] = 1.0;
+    
+    vertices[123] = 1.0; vertices[124] = 0.0; vertices[125] = -3.0;
+    colors[123] = 0.0; colors[124] = 0.0; colors[125] = 1.0;
     
     glGenVertexArrays(2, &vaoID[0]); // Create our Vertex Array Object
     glBindVertexArray(vaoID[0]); // Bind our Vertex Array Object so we can use it
@@ -205,7 +243,7 @@ unsigned int createTriangleStripModel(void)
     
     // vertices
     glBindBuffer(GL_ARRAY_BUFFER, vboID[0]); // Bind our Vertex Buffer Object
-    glBufferData(GL_ARRAY_BUFFER, 144 * sizeof(GLfloat), vertices, GL_STATIC_DRAW); // Set the size and data of our VBO and set it to STATIC_DRAW
+    glBufferData(GL_ARRAY_BUFFER, 126 * sizeof(GLfloat), vertices, GL_STATIC_DRAW); // Set the size and data of our VBO and set it to STATIC_DRAW
     
     glVertexAttribPointer((GLuint)0, 3, GL_FLOAT, GL_FALSE, 0, 0); // Set up our vertex attributes pointer
     glEnableVertexAttribArray(0); // Disable our Vertex Array Object
@@ -213,7 +251,7 @@ unsigned int createTriangleStripModel(void)
     
     //Color
     glBindBuffer(GL_ARRAY_BUFFER, vboID[1]); // Bind our second Vertex Buffer Object
-    glBufferData(GL_ARRAY_BUFFER, 144 * sizeof(GLfloat), colors, GL_STATIC_DRAW); // Set the size and data of our VBO and set it to STATIC_DRAW
+    glBufferData(GL_ARRAY_BUFFER, 126 * sizeof(GLfloat), colors, GL_STATIC_DRAW); // Set the size and data of our VBO and set it to STATIC_DRAW
     
     glVertexAttribPointer((GLuint)1, 3, GL_FLOAT, GL_FALSE, 0, 0); // Set up our vertex attributes pointer
     glEnableVertexAttribArray(1); // Enable the second vertex attribute array
@@ -221,7 +259,7 @@ unsigned int createTriangleStripModel(void)
     glBindVertexArray(0); // Disable our Vertex Buffer Object
     
     delete [] vertices; // Delete our vertices from memory
-    
+    delete [] colors;
     return 1;
 }
 
@@ -231,10 +269,34 @@ unsigned int createTriangleStripModel(void)
 unsigned int createMyModel(void)
 {
     // use the vertex array object vaoID[1] for this model representation
-        
-    //TODO:
-    vaoID[1];
+    float* vertices = new float[200];  // Vertices
+    float *colors = new float[200]; // Colors
     
+    glGenVertexArrays(2, &vaoID[1]); // Create our Vertex Array Object
+    glBindVertexArray(vaoID[1]); // Bind our Vertex Array Object so we can use it
+    
+    glGenBuffers(2, vboID); // Generate our Vertex Buffer Object
+    
+    // vertices
+    glBindBuffer(GL_ARRAY_BUFFER, vboID[1]); // Bind our Vertex Buffer Object
+    glBufferData(GL_ARRAY_BUFFER, 200 * sizeof(GLfloat), vertices, GL_STATIC_DRAW); // Set the size and data of our VBO and set it to STATIC_DRAW
+    
+    glVertexAttribPointer((GLuint)0, 3, GL_FLOAT, GL_FALSE, 0, 0); // Set up our vertex attributes pointer
+    glEnableVertexAttribArray(0); // Disable our Vertex Array Object
+    
+    
+    //Color
+    glBindBuffer(GL_ARRAY_BUFFER, vboID[1]); // Bind our second Vertex Buffer Object
+    glBufferData(GL_ARRAY_BUFFER, 200 * sizeof(GLfloat), colors, GL_STATIC_DRAW); // Set the size and data of our VBO and set it to STATIC_DRAW
+    
+    glVertexAttribPointer((GLuint)1, 3, GL_FLOAT, GL_FALSE, 0, 0); // Set up our vertex attributes pointer
+    glEnableVertexAttribArray(1); // Enable the second vertex attribute array
+    
+    glBindVertexArray(0); // Disable our Vertex Buffer Object
+    
+    delete [] vertices; // Delete our vertices from memory
+    delete [] colors;
+
     return 1;
 }
 
@@ -249,7 +311,9 @@ void renderTriangleStripModel(void)
     glBindVertexArray(vaoID[0]);
     
     // Draw the triangles
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 30);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 42);
+    
+    glBindVertexArray(0);
 }
 
 /*!
@@ -410,7 +474,7 @@ int main(int argc, const char * argv[])
         glUniformMatrix4fv(viewMatrixLocation, 1, GL_FALSE, &viewMatrix[0][0]); // send the view matrix to our shader
         
         // This moves the model to the right
-        modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-2.0f, 0.0f, 0.0f));
+        modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(2.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(modelMatrixLocation, 1, GL_FALSE, &modelMatrix[0][0]); // Send our model matrix to the shader
         
         renderTriangleStripModel();
